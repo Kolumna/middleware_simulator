@@ -1,5 +1,5 @@
 services:
-  middleware_simulator:
+  app:
     build: .
     container_name: ptrace-centos
     cap_add:
