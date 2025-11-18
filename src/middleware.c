@@ -29,7 +29,7 @@ long get_address_of_string_in_process(pid_t pid, const char *target)
     return -1;
   }
 
-  size_t t_len = strlen(target);
+  int t_len = strlen(target);
 
   while (fgets(line, sizeof(line), maps))
   {
@@ -59,7 +59,7 @@ long get_address_of_string_in_process(pid_t pid, const char *target)
       {
         int match = 1;
 
-        size_t i;
+        int i;
         for (i = 1; i < t_len; i++)
         {
           errno = 0;
@@ -93,7 +93,7 @@ int write_string(pid_t pid, long addr, const char *newstr)
 
   size_t word = sizeof(long);
 
-  size_t i;
+  int i;
   for (i = 0; i < sizeof(buffer); i += word)
   {
     long chunk = 0;

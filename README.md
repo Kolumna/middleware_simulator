@@ -21,11 +21,23 @@ Następnie, użyj PID wyświetlonego przez program `request`, aby uruchomić pro
 ```
 
 ## Docker
-Aby uruchomić oba programy w kontenerze Docker, użyj następujących poleceń:
+Aby uruchomić oba programy w środowisku Docker, wykonaj następujące kroki:
+Najpierw zbuduj i uruchom kontenery Docker:
 ```bash
 docker compose up -d
-docker compose exec app bash -c "cd /src && make"
-docker compose exec app ./request <ADMIN | USER>
-docker compose exec app ./middleware <PID_request> <URL_docelowy>
+```
+Następnie, wejdź do kontenera aplikacji i skompiluj programy:
+```bash
+docker compose exec app bash
+cd src
+make
+```
+Następnie, w jednym terminalu uruchom program `request`:
+```bash
+./request <ADMIN | USER>
+```
+W drugim terminalu, użyj PID wyświetlonego przez program `request`, aby uruchomić program `middleware` z odpowiednim URL-em:
+```bash
+./middleware <PID_request> <URL_docelowy>
 ```
 Pamiętaj, aby zastąpić `<PID_request>` rzeczywistym PID-em procesu `request`, `<URL_docelowy>` odpowiednim URL-em oraz `<ADMIN | USER>` odpowiednią rolą użytkownika.

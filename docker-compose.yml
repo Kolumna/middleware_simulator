@@ -1,7 +1,7 @@
 services:
   app:
     build: .
-    container_name: ptrace-centos
+    container_name: app
     cap_add:
       - SYS_PTRACE
     security_opt:
@@ -9,5 +9,5 @@ services:
     tty: true
     stdin_open: true
     volumes:
-      - ./src:/src
-    working_dir: /src
+      - .:/app
+    working_dir: /app

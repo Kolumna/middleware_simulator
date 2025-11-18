@@ -17,14 +17,14 @@ int main(int argc, char **argv)
 {
     if (argc != 2)
     {
-        printf("Uzycie: %s <USER | ADMIN>\n", argv[0]);
+        printf("Uzycie: %s <ROLA>\n", argv[0]);
         return 1;
     }
-    if (!strcmp(argv[1], "USER") && !strcmp(argv[1], "ADMIN"))
-    {
-        printf("Nieprawidlowa rola. Dostepne role: USER, ADMIN\n");
-        return 1;
-    }
+    // if (strcmp(argv[1], "USER") != 0 && strcmp(argv[1], "ADMIN") != 0)
+    // {
+    //     printf("Nieprawidlowa rola. Dostepne role: USER, ADMIN\n");
+    //     return 1;
+    // }
     strncpy(auth, argv[1], sizeof(auth) - 1);
 
     printf("\033[1;34m======================================================\n");
@@ -36,7 +36,7 @@ int main(int argc, char **argv)
     {
         printf("----------------------\n");
         printf("\033[1;32mPID: %d\033[0m\n", getpid());
-        printf("Auth = \033[1;31m%s\033[0m | \033[1;34m%p\033[0m\n", auth, (void *)&auth);
+        printf("Auth = \033[1;31m%s\033[0m | \033[1;34m%p\033[0m\n", auth, (void *)&redirect);
 
         if (redirect[0] != '_')
         {
